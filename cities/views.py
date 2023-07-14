@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import Location, Weather
 import requests
 
-
 # Create your views here.
 
 def cities_list(request):

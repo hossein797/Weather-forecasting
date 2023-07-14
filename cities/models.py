@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-import datetime
+from datetime import datetime
 
 
 # Create your models here.
@@ -31,9 +31,14 @@ class Weather(models.Model):
     ceiling = models.DecimalField(max_digits=5, decimal_places=2, null=True)
     cloudCover = models.DecimalField(max_digits=5, decimal_places=2, null=True)
     windGust = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    time = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
-        return self.temperature
+        return f"{self.location.name}-{self.temperature} °C-{self.time}"
 
     def was_for_a_week(self):
         return self.forecast_time >= timezone.now() - datetime.timedelta(weeks=1)
+
+
+class Users(models.Model):
+    username = models.CharField(max_length=30)
