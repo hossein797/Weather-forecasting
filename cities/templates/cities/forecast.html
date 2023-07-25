@@ -1,0 +1,83 @@
+{% extends './layout/base.html' %}
+
+
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "cities/forecast_style.css" %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <header>
+        <h1>{{ city.name }} Weather</h1>
+    </header>
+    <div class="current-weather">
+        <div class="temp">{{ response.data.values.temperature }}</div>
+        <span class="temp-unit">C°</span>
+        <div class="desc">{{ response.data.conditions }}</div>
+        <div class="details">
+            <div>
+                <div class="label">Feels Like</div>
+                <div>{{ response.data.values.temperatureApparent }}°</div>
+            </div>
+            <div>
+                <div class="label">Wind</div>
+                <div>{{ response.data.values.windSpeed }} km/h</div>
+            </div>
+            <div>
+                <div class="label">Humidity</div>
+                <div>{{ response.data.values.humidity }}%</div>
+            </div>
+        </div>
+        <i class="icon {{ response.data.icon }}"></i>
+    </div>
+    <div class="current-weather-details">
+
+        <div class="weather-details-container">
+            <div class="weather-condition">
+                {{ response.data.weatherDescription }}
+            </div>
+            <div class="weather-details">
+                <div class="detail">
+                    <span class="label">RealFeel</span>
+                    <span class="value">{{ response.data.values.temperatureApparent }}</span>
+                    <span class="unit">&deg;C</span>
+                </div>
+                <div class="detail">
+                    <span class="label">UV Index</span>
+                    <span class="value">{{ response.data.values.uvIndex }}</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Humidity</span>
+                    <span class="value">{{ response.data.values.humidity }}%</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Visibility</span>
+                    <span class="value">{{ response.data.values.visibility }} km</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Barometer</span>
+                    <span class="value">{{ response.data.values.pressure }} mb</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Dew Point</span>
+                    <span class="value">{{ response.data.values.dewPoint }}</span>
+                    <span class="unit">&deg;C</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Ceiling</span>
+                    <span class="value">{{ response.data.values.ceiling }} m</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Cloud Cover</span>
+                    <span class="value">{{ response.data.values.cloudCover }}%</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Wind Gusts</span>
+                    <span class="value">{{ response.data.values.windGust }}</span>
+                    <span class="unit">km/h</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock content %}

@@ -1,44 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>List of Cities</title>
-    <style>
-      body {
-        background-color: #f2f2f2;
-      }
-      .container {
-        width: 80%;
-        margin: 0 auto;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        padding: 20px;
-      }
-      h1 {
-        color: #333;
-        text-align: center;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-      }
-      li {
-        margin: 10px 0;
-      }
-      a {
-        color: #007bff;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .no-city {
-        text-align: center;
-        font-style: italic;
-        color: #777;
-      }
-    </style>
-  </head>
-  <body>
+{% extends './layout/base.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "cities/index_style.css" %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
     <div class="container">
       <h1>List of Cities</h1>
       {% if cities %}
@@ -51,5 +17,4 @@
         <p class="no-city">No city defined.</p>
       {% endif %}
     </div>
-  </body>
-</html>
+{% endblock content %}

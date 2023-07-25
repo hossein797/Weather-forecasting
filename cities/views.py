@@ -44,4 +44,4 @@ def forecasts(request, location_id):
     data = requests.get(url, headers=headers)
     response = data.json()  # class dict
     save_into_db(response)
-    return render(request, 'cities/forcast.html', {"response": response, "city": city})
+    return render(request, 'cities/forecast.html', {"response": response, "city": city})
